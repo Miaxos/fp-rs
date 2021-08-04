@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "fp-ts"
+name = "fp-rs"
 version = "0.0.1"

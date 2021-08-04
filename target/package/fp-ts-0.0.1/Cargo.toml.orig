@@ -1,5 +1,5 @@
 [package]
-name = "fp-rs"
+name = "fp-ts"
 version = "0.0.1"
 authors = ["Anthony Griffon <anthony@griffon.one>"]
 description = "Functional programing in Rust"
