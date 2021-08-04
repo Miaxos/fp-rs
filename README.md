@@ -27,3 +27,4 @@ fp-rs
 * [Purescript](https://www.purescript.org/)
 * [Scala](https://scala-lang.org/)
 * [fp-ts](https://github.com/gcanti/fp-ts)
+* [fp-core.rs](https://github.com/JasonShin/fp-core.rs)

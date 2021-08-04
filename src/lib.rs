@@ -1,3 +1,5 @@
+#![feature(generic_associated_types)]
+
 //! # Functional Programming for Rust
 //!  <div align="center">
 //!  <!-- CI -->
@@ -16,4 +18,11 @@
 //!
 //!
 
-pub struct WIP(());
+mod functor;
+mod hkt;
+
+trait LendingIterator {
+    type Item<'a>;
+
+    fn next<'b>(&'b mut self) -> Self::Item<'b>;
+}
