@@ -18,7 +18,9 @@
 //!
 //!
 
+mod applicative;
 mod apply;
+mod chain;
 mod functor;
 mod hkt;
 mod pointed;
