@@ -18,6 +18,7 @@
 //!
 //!
 
+mod apply;
 mod functor;
 mod hkt;
 

@@ -30,6 +30,7 @@ impl<'t, A, B> Functor<'t, B> for Option<A> {
     }
 }
 
+/*
 impl<'t, A, B, E> Functor<'t, B> for Result<A, E> {
     fn fmap<F>(self, f: F) -> Self::Target<'t>
     where
@@ -39,6 +40,7 @@ impl<'t, A, B, E> Functor<'t, B> for Result<A, E> {
         self.map(f)
     }
 }
+*/
 
 mod test {
     use super::Functor;
