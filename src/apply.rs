@@ -32,8 +32,9 @@ mod test {
 
     #[test]
     fn test_apply() {
-        let fa = Some(1).ap(Some(|x| x + 1));
-        assert_eq!(fa, Some(2));
+        let f = |x: usize| move |y: usize| x + y;
+        let fa = Some(4).ap(Some(2).ap(Some(f)));
+        assert_eq!(fa, Some(6));
     }
 }
 
