@@ -21,6 +21,7 @@
 mod apply;
 mod functor;
 mod hkt;
+mod pointed;
 
 trait LendingIterator {
     type Item<'a>;
