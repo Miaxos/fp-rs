@@ -23,7 +23,9 @@ mod apply;
 mod chain;
 mod functor;
 mod hkt;
+mod monad;
 mod pointed;
+mod task;
 
 trait LendingIterator {
     type Item<'a>;
