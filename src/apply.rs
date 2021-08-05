@@ -9,26 +9,28 @@ use crate::hkt::HKT;
 ///     1. Associative composition: `F.ap(F.ap(F.fmap(fbc, bc => ab => a => bc(ab(a))), fab), fa) <-> F.ap(fbc, F.ap(fab, fa))`
 ///
 /// Formally, `Apply` represents a strong lax semi-monoidal endofunctor.
-pub trait Apply<'a, F, B>: Functor<'a, B> + HKT<F>
-where
-    F: FnOnce(<Self as HKT<B>>::Current<'a>) -> B,
-{
-    fn ap(self, f: <Self as HKT<F>>::Target<'a>) -> <Self as HKT<B>>::Target<'a>;
+pub trait Apply<'a, B>: Functor<'a, B> {
+    fn ap<F>(self, f: <Self as HKT<F>>::Target<'a>) -> <Self as HKT<B>>::Target<'a>
+    where
+        F: FnOnce(<Self as HKT<B>>::Current<'a>) -> B,
+        Self: HKT<F>;
 }
 
 // Implementation for Option
 //
-impl<'a, A, F, B> Apply<'a, F, B> for Option<A>
-where
-    F: FnOnce(<Self as HKT<B>>::Current<'a>) -> B,
-{
-    fn ap(self, f: <Self as HKT<F>>::Target<'a>) -> <Self as HKT<B>>::Target<'a> {
+impl<'a, A, B> Apply<'a, B> for Option<A> {
+    fn ap<F>(self, f: <Self as HKT<F>>::Target<'a>) -> <Self as HKT<B>>::Target<'a>
+    where
+        F: FnOnce(<Self as HKT<B>>::Current<'a>) -> B,
+    {
         self.and_then(|v| f.fmap(|z| z(v)))
     }
 }
 
 mod test {
     use super::Apply;
+    use super::Functor;
+    use super::HKT;
 
     #[test]
     fn test_apply() {
